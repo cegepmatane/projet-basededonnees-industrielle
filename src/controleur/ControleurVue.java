@@ -2,41 +2,36 @@ package controleur;
 
 import vue.VuePrincipale;
 
-public class ControleurVue
+public class ControleurVue 
 {
-    protected static ControleurVue instance;
-    private VuePrincipale vuePrincipale = null;
+	protected static ControleurVue instance;
+	private VuePrincipale vuePrincipale = null;
+	
+	public static ControleurVue getInstance()
+	{
+		if(instance == null) instance = new ControleurVue();
+		return instance;
+	}
+	
+	public void setVuePrincipale(VuePrincipale vuePrincipale)
+	{
+		this.vuePrincipale = vuePrincipale;
+	}
 
-    public static ControleurVue getInstance()
-    {
-        if(instance == null) instance = new ControleurVue();
-        return instance;
-    }
+	public void actionModifierItem() 
+	{
+		this.vuePrincipale.construirePanneauModifierListe();
+	}
 
-    public void setVuePrincipale(VuePrincipale vuePrincipale)
-    {
-        this.vuePrincipale = vuePrincipale;
-    }
+	public void actionRetourEnArriere() 
+	{
+		this.vuePrincipale.construirePanneauListe();
+	}
 
-    public void actionModifierItem()
-    {
-        this.vuePrincipale.construirePanneauModifierListe();
-    }
-
-    public void actionRetourEnArriere()
-    {
-        this.vuePrincipale.construirePanneauListe();
-    }
-
-    public void actionAjouterItem()
-    {
-        this.vuePrincipale.construirePanneauAjouterItem();
-    }
-
-    public void actionSupprimerItem()
-    {
-        this.vuePrincipale.construirePanneauSupprimerItem();
-    }
-
-
+	public void actionAjouterItem() 
+	{
+		this.vuePrincipale.construirePanneauAjouterItem();
+	}
+	
+	
 }
