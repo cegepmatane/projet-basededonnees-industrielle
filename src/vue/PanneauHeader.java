@@ -6,24 +6,24 @@ import javafx.scene.layout.Region;
 
 public class PanneauHeader extends Region
 {
-    public PanneauHeader()
-    {
-        super();
+	public PanneauHeader()
+	{
+		super();
+		
+		ConstruirePanneau();
+	}
 
-        ConstruirePanneau();
-    }
-
-    private void ConstruirePanneau()
-    {
-        HBox hBox = new HBox();
-
-        Label labelNomProgramme = new Label();
-        labelNomProgramme.setId("labelNomProgramme");
-        labelNomProgramme.setText("Liste des transporteurs");
-        hBox.getChildren().add(labelNomProgramme);
-
-        //TODO: add Logo;
-
-        this.getChildren().add(hBox);
-    }
+	private void ConstruirePanneau() 
+	{
+		HBox hBox = new HBox();
+		
+		Label labelNomProgramme = new Label();
+		labelNomProgramme.setId("labelNomProgramme");
+		labelNomProgramme.setText("Liste des transporteurs");
+		hBox.getChildren().add(labelNomProgramme);
+		
+		//TODO: add Logo;
+		
+		this.getChildren().add(hBox);
+	}
 }
