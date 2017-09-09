@@ -22,7 +22,7 @@ public class AileIndustrielle
 		      System.out.println("Connecting to database...");
 		      conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-		      //STEP 4: Execute a query
+		      /*//STEP 4: Execute a query
 		      System.out.println("Creating statement...");
 		      stmt = conn.createStatement();
 		      String sql;
@@ -38,11 +38,12 @@ public class AileIndustrielle
 		         //Display values
 		         System.out.print("ID: " + idArmateur);
 		         System.out.println(", Nom: " + nom);
+		         System.out.println("Allo");
 		      }
 		      //STEP 6: Clean-up environment
 		      rs.close();
 		      stmt.close();
-		      conn.close();
+		      conn.close();*/
 		   }catch(SQLException se){
 		      //Handle errors for JDBC
 		      se.printStackTrace();
@@ -65,7 +66,7 @@ public class AileIndustrielle
 		   }//end try
 		   System.out.println("Goodbye!");
 		
-		VuePrincipale vuePrincipale = new VuePrincipale();
+		VuePrincipale vuePrincipale = new VuePrincipale(conn);
 		vuePrincipale.launch(VuePrincipale.class, args);
 	}
 }

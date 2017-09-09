@@ -1,5 +1,7 @@
 package vue;
 
+import java.util.List;
+
 import controleur.ControleurVue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,15 +10,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import modele.Armateur;
 
 public class PanneauListe extends Region
 {
 	private ListView<PanneauItemListe> panneauListeItem;
+	private List<Armateur> list;
 	
-	public PanneauListe()
+	public PanneauListe(List<Armateur> list)
 	{
 		super();
-		
+		this.list = list;
 		ConstruirePanneau();
 	}
 
@@ -40,17 +44,22 @@ public class PanneauListe extends Region
 		
 		panneauListeItem = new ListView<PanneauItemListe>();
 		panneauListeItem.setPrefSize(400, 600 - 30);
-		construireVueListeItem();
+		construireVueListeItem(list);
 		
 		
 		vBox.getChildren().add(panneauListeItem);
 		this.getChildren().add(vBox);
 	}
 	
-	private void construireVueListeItem()
+	private void construireVueListeItem(List<Armateur> list)
 	{
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
+		
+		for(Armateur armateur : list)
+		{
+			panneauListeItem.getItems().add(new PanneauItemListe(armateur.getNom()));
+		}
+		
+		/*panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
 		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
 		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
 		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
@@ -72,7 +81,7 @@ public class PanneauListe extends Region
 		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
 		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
 		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
+		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));*/
 		
 	}
 	

@@ -1,10 +1,14 @@
 package vue;
 
+import java.sql.*;
+import java.util.List;
+
 import controleur.ControleurVue;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import modele.Armateur;
 
 public class VuePrincipale extends Application
 {
@@ -13,14 +17,22 @@ public class VuePrincipale extends Application
 	private PanneauModifierItem panneauModifierItem;
 	private BorderPane panneauPrincipale;
 	private PanneauAjouterItem panneauAjouterItem;
+	private Connection conn;
+	
+	
+	
+	public VuePrincipale(Connection conn2)
+	{
+		this.conn = conn2;
+	}
 	
 	@Override
-	public void start(Stage scenePrincipale)
+	public void start(Stage scenePrincipale) throws SQLException
 	{
 		ControleurVue.getInstance().setVuePrincipale(this);
 		
 		panneauHeader = new PanneauHeader();
-		panneauListe = new PanneauListe();
+		panneauListe = new PanneauListe(this.construireListeArmateur());
 		
 		panneauPrincipale = new BorderPane();
 		
@@ -39,6 +51,33 @@ public class VuePrincipale extends Application
 		scenePrincipale.show();
 	}
 	
+	@SuppressWarnings("null")
+	public List<Armateur> construireListeArmateur() throws SQLException
+	{
+		System.out.println("Creating statement...");
+	      Statement stmt = conn.createStatement();
+	      String sql;
+	      sql = "SELECT idArmateur, nom FROM armateur";
+	      ResultSet rs = stmt.executeQuery(sql);
+	      List<Armateur> listeArmateur = null;
+	      //STEP 5: Extract data from result set
+	      while(rs.next()){
+	         //Retrieve by column name
+	         int idArmateur  = rs.getInt("idArmateur");
+	         String nom = rs.getString("nom");
+	         
+	         Armateur armateur = new Armateur();
+	         armateur.setIdArmateur(idArmateur);
+	         armateur.setNom(nom);
+	         
+	         listeArmateur.add(armateur);
+	      }
+		
+		
+		return listeArmateur;
+		
+	}
+	
 	public void construirePanneauModifierListe()
 	{
 		panneauModifierItem = new PanneauModifierItem();
@@ -46,9 +85,9 @@ public class VuePrincipale extends Application
 		panneauPrincipale.setCenter(panneauModifierItem);
 	}
 
-	public void construirePanneauListe() 
+	public void construirePanneauListe() throws SQLException 
 	{
-		panneauListe = new PanneauListe();
+		panneauListe = new PanneauListe(this.construireListeArmateur());
 		
 		panneauPrincipale.setCenter(panneauListe);
 	}
