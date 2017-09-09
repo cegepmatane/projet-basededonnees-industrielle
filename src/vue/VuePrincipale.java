@@ -1,6 +1,7 @@
 package vue;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import controleur.ControleurVue;
@@ -18,18 +19,27 @@ public class VuePrincipale extends Application
 	private BorderPane panneauPrincipale;
 	private PanneauAjouterItem panneauAjouterItem;
 	private Connection conn;
+	static final String DB_URL = "jdbc:mysql://localhost/portmatane";
+	
+	static final String USER = "root";
+	static final String PASS = "";
 	
 	
-	
-	public VuePrincipale(Connection conn2)
-	{
-		this.conn = conn2;
-	}
 	
 	@Override
-	public void start(Stage scenePrincipale) throws SQLException
+	public void start(Stage scenePrincipale) throws SQLException, ClassNotFoundException
 	{
 		ControleurVue.getInstance().setVuePrincipale(this);
+		
+		conn = null;
+		Statement stmt = null;
+	      //STEP 2: Register JDBC driver
+	      Class.forName("com.mysql.jdbc.Driver");
+
+	      //STEP 3: Open a connection
+	      System.out.println("Connecting to database...");
+	      conn = DriverManager.getConnection(DB_URL,USER,PASS);
+		
 		
 		panneauHeader = new PanneauHeader();
 		panneauListe = new PanneauListe(this.construireListeArmateur());
@@ -59,7 +69,7 @@ public class VuePrincipale extends Application
 	      String sql;
 	      sql = "SELECT idArmateur, nom FROM armateur";
 	      ResultSet rs = stmt.executeQuery(sql);
-	      List<Armateur> listeArmateur = null;
+	      List<Armateur> listeArmateur = new ArrayList<Armateur>();
 	      //STEP 5: Extract data from result set
 	      while(rs.next()){
 	         //Retrieve by column name
@@ -70,7 +80,9 @@ public class VuePrincipale extends Application
 	         armateur.setIdArmateur(idArmateur);
 	         armateur.setNom(nom);
 	         
+	         System.out.println(armateur.getNom());
 	         listeArmateur.add(armateur);
+	         
 	      }
 		
 		

@@ -1,5 +1,7 @@
 package controleur;
 
+import java.sql.SQLException;
+
 import vue.VuePrincipale;
 
 public class ControleurVue 
@@ -23,7 +25,7 @@ public class ControleurVue
 		this.vuePrincipale.construirePanneauModifierListe();
 	}
 
-	public void actionRetourEnArriere() 
+	public void actionRetourEnArriere() throws SQLException 
 	{
 		this.vuePrincipale.construirePanneauListe();
 	}

@@ -21,7 +21,7 @@ public class AileIndustrielle
 		      //STEP 3: Open a connection
 		      System.out.println("Connecting to database...");
 		      conn = DriverManager.getConnection(DB_URL,USER,PASS);
-
+		      
 		      /*//STEP 4: Execute a query
 		      System.out.println("Creating statement...");
 		      stmt = conn.createStatement();
@@ -66,7 +66,8 @@ public class AileIndustrielle
 		   }//end try
 		   System.out.println("Goodbye!");
 		
-		VuePrincipale vuePrincipale = new VuePrincipale(conn);
-		vuePrincipale.launch(VuePrincipale.class, args);
+		   VuePrincipale vuePrincipale = new VuePrincipale();
+		   vuePrincipale.launch(VuePrincipale.class, args);
+		
 	}
 }
