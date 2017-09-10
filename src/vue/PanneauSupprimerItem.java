@@ -14,7 +14,7 @@ import java.sql.*;
 public class PanneauSupprimerItem extends Region {
 
     private int id;
-    static final String DB_URL = "jdbc:mysql://localhost/matane_port";
+    static final String DB_URL = "jdbc:mysql://localhost/portmatane";
 
     static final String USER = "root";
     static final String PASS = "";

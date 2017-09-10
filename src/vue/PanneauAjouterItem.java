@@ -19,7 +19,7 @@ public class PanneauAjouterItem extends Region {
 
     private TextField nomArmateur;
 
-    static final String DB_URL = "jdbc:mysql://localhost/matane_port";
+    static final String DB_URL = "jdbc:mysql://localhost/portmatane";
 
     static final String USER = "root";
     static final String PASS = "";

@@ -66,29 +66,6 @@ public class PanneauListe extends Region
 			panneauListeItem.getItems().add(new PanneauItemListe(armateur));
 		}
 		
-		/*panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test1"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test3"));
-		panneauListeItem.getItems().add(new PanneauItemListe("Test4"));*/
 		
 	}
 	
