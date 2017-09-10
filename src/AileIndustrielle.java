@@ -65,6 +65,8 @@ public class AileIndustrielle
 		      }//end finally try
 		   }//end try
 		   System.out.println("Goodbye!");
+		   
+		   
 		
 		   VuePrincipale vuePrincipale = new VuePrincipale();
 		   vuePrincipale.launch(VuePrincipale.class, args);

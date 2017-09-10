@@ -80,7 +80,7 @@ public class VuePrincipale extends Application
 	         armateur.setIdArmateur(idArmateur);
 	         armateur.setNom(nom);
 	         
-	         System.out.println(armateur.getNom());
+	         //System.out.println(armateur.getNom());
 	         listeArmateur.add(armateur);
 	         
 	      }
@@ -90,9 +90,9 @@ public class VuePrincipale extends Application
 		
 	}
 	
-	public void construirePanneauModifierListe()
+	public void construirePanneauModifierListe(Armateur armateur)
 	{
-		panneauModifierItem = new PanneauModifierItem();
+		panneauModifierItem = new PanneauModifierItem(armateur);
 		
 		panneauPrincipale.setCenter(panneauModifierItem);
 	}

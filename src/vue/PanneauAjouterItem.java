@@ -35,12 +35,14 @@ public class PanneauAjouterItem extends Region
 			@Override
 			public void handle(ActionEvent event) 
 			{
+
 				try {
 					ControleurVue.getInstance().actionRetourEnArriere();
-				} catch (SQLException e) {
+				} catch (ClassNotFoundException | SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
 			}
 		});
 		

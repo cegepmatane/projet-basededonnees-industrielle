@@ -1,5 +1,7 @@
 package vue;
 
+import java.sql.SQLException;
+
 import controleur.ControleurVue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,21 +9,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import modele.Armateur;
 
 public class PanneauItemListe extends Region
 {
 	private HBox itemBoite;
 	private String nomItem;
 	
-	public PanneauItemListe(String nomItem)
+	public PanneauItemListe(Armateur armateur)
 	{
 		super();
-		this.nomItem = nomItem;
+		this.nomItem = armateur.getNom();
 		
-		ConstruirePanneau();
+		ConstruirePanneau(armateur);
 	}
 
-	private void ConstruirePanneau() 
+	private void ConstruirePanneau(Armateur armateur) 
 	{
 		itemBoite = new HBox();
 		
@@ -34,7 +37,12 @@ public class PanneauItemListe extends Region
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				ControleurVue.getInstance().actionModifierItem();
+				try {
+					ControleurVue.getInstance().actionModifierItem(armateur);
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		itemBoite.getChildren().add(btnActionModifier);

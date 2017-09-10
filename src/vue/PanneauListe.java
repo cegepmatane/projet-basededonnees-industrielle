@@ -1,5 +1,7 @@
 package vue;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import controleur.ControleurVue;
@@ -37,7 +39,12 @@ public class PanneauListe extends Region
 			@Override
 			public void handle(ActionEvent event) 
 			{
-				ControleurVue.getInstance().actionAjouterItem();
+				try {
+					ControleurVue.getInstance().actionAjouterItem();
+				} catch (ClassNotFoundException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		vBox.getChildren().add(btnActionAjouterItem);
@@ -56,7 +63,7 @@ public class PanneauListe extends Region
 		
 		for(Armateur armateur : list)
 		{
-			panneauListeItem.getItems().add(new PanneauItemListe(armateur.getNom()));
+			panneauListeItem.getItems().add(new PanneauItemListe(armateur));
 		}
 		
 		/*panneauListeItem.getItems().add(new PanneauItemListe("Test2"));
