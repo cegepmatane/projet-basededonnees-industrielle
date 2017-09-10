@@ -20,7 +20,7 @@ public class VuePrincipale extends Application
 	private BorderPane panneauPrincipale;
 	private PanneauAjouterItem panneauAjouterItem;
 	private Connection conn;
-	static final String DB_URL = "jdbc:mysql://localhost/matane_port";
+	static final String DB_URL = "jdbc:mysql://localhost/portmatane";
 	
 	static final String USER = "root";
 	static final String PASS = "";
