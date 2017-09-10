@@ -34,6 +34,10 @@ public class ControleurVue
 		this.vuePrincipale.construirePanneauModifierListe(armateur);
 	}
 
+	public void actionSupprimerItem(int id){
+		this.vuePrincipale.construirePanneauSupprimerItem(id);
+	}
+
 	public void actionRetourEnArriere() throws SQLException 
 	{
 		this.vuePrincipale.construirePanneauListe();

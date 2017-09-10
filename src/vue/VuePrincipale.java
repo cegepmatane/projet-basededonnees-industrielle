@@ -16,10 +16,11 @@ public class VuePrincipale extends Application
 	private PanneauHeader panneauHeader;
 	private PanneauListe panneauListe;
 	private PanneauModifierItem panneauModifierItem;
+	private PanneauSupprimerItem panneauSupprimerItem;
 	private BorderPane panneauPrincipale;
 	private PanneauAjouterItem panneauAjouterItem;
 	private Connection conn;
-	static final String DB_URL = "jdbc:mysql://localhost/portmatane";
+	static final String DB_URL = "jdbc:mysql://localhost/matane_port";
 	
 	static final String USER = "root";
 	static final String PASS = "";
@@ -95,6 +96,12 @@ public class VuePrincipale extends Application
 		panneauModifierItem = new PanneauModifierItem(armateur);
 		
 		panneauPrincipale.setCenter(panneauModifierItem);
+	}
+
+	public void construirePanneauSupprimerItem(int id){
+		panneauSupprimerItem = new PanneauSupprimerItem(id);
+
+		panneauPrincipale.setCenter(panneauSupprimerItem);
 	}
 
 	public void construirePanneauListe() throws SQLException 

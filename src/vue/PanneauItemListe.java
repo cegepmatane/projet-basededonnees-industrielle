@@ -46,6 +46,21 @@ public class PanneauItemListe extends Region
 			}
 		});
 		itemBoite.getChildren().add(btnActionModifier);
+
+		Button btnActionSupprimer = new Button("Supprimer");
+		btnActionSupprimer.setOnAction(new EventHandler<ActionEvent>()
+		{
+			@Override
+			public void handle(ActionEvent event)
+			{
+				try {
+					ControleurVue.getInstance().actionSupprimerItem(armateur.getIdArmateur());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		itemBoite.getChildren().add(btnActionSupprimer);
 		
 		this.getChildren().add(itemBoite);
 	}
