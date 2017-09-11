@@ -65,8 +65,7 @@ public class PanneauListe extends Region
 		{
 			panneauListeItem.getItems().add(new PanneauItemListe(armateur));
 		}
-		
-		
+
 	}
 	
 	

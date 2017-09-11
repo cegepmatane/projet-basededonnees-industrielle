@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import modele.Armateur;
-import modele.Modele;
+import modele.ArmateurDAO;
 
 public class PanneauModifierItem extends Region
 {
@@ -65,9 +65,10 @@ public class PanneauModifierItem extends Region
 				//TODO: a faire Sauvegarde;
 				System.out.println(armateur.getIdArmateur() + " Sauvegarder");
 				try {
-					ControleurVue.getInstance().actionSauvegarderArmateur(armateur);
+					System.out.println("control: sauvegarde");
+					ArmateurDAO.getInstance().modifierArmateur(armateur);
+					ControleurVue.getInstance().actionRetourEnArriere();
 				} catch (ClassNotFoundException | SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -81,7 +82,6 @@ public class PanneauModifierItem extends Region
 		
 		this.getChildren().add(grid);
 	}
-	
 	
     private void addTextField(GridPane grid, TextField textField,String texteLabel, int colonne, int ligne){
         grid.add(new Label(texteLabel), colonne, ligne);

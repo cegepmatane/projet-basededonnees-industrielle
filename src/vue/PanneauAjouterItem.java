@@ -14,15 +14,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import modele.Armateur;
+import modele.ArmateurDAO;
 
 public class PanneauAjouterItem extends Region {
 
     private TextField nomArmateur;
-
-    static final String DB_URL = "jdbc:mysql://localhost/portmatane";
-
-    static final String USER = "root";
-    static final String PASS = "";
 
     public PanneauAjouterItem() {
         super();
@@ -59,37 +56,10 @@ public class PanneauAjouterItem extends Region {
         BtnActionSauvegardeeModification.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //Supprimer ici
-                Connection conn = null;
-                Statement stmt = null;
                 try {
-                    //STEP 2: Register JDBC driver
-                    Class.forName("com.mysql.jdbc.Driver");
-
-                    //STEP 3: Open a connection
-                    System.out.println("Connecting to database...");
-                    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-                    //STEP 4: Execute a query
-                    System.out.println("Creating statement...");
-                    stmt = conn.createStatement();
-                    String sqlAjouter;
-                    sqlAjouter = "INSERT INTO `armateur` (`idArmateur`, `nom`) VALUES (NULL, '"+ nomArmateur.getText() + "');";
-                    stmt.executeUpdate(sqlAjouter); //updateQuery
-
-                    //STEP 6: Clean-up environment
-                    //rs.close();
-                    stmt.close();
-                    conn.close();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-                try {
+                    ArmateurDAO.getInstance().ajouterArmateur(nomArmateur.getText());
                     ControleurVue.getInstance().actionRetourEnArriere();
-                } catch (Exception e) {
+                } catch (ClassNotFoundException | SQLException e) {
                     e.printStackTrace();
                 }
             }

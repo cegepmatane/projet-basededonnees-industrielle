@@ -8,16 +8,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import modele.ArmateurDAO;
 
 import java.sql.*;
 
 public class PanneauSupprimerItem extends Region {
 
     private int id;
-    static final String DB_URL = "jdbc:mysql://localhost/portmatane";
-
-    static final String USER = "root";
-    static final String PASS = "";
 
     public PanneauSupprimerItem(int id) {
         super();
@@ -54,35 +51,8 @@ public class PanneauSupprimerItem extends Region {
             @Override
             public void handle(ActionEvent event)
             {
-                //Supprimer ici
-                Connection conn = null;
-                Statement stmt = null;
                 try {
-                    //STEP 2: Register JDBC driver
-                    Class.forName("com.mysql.jdbc.Driver");
-
-                    //STEP 3: Open a connection
-                    System.out.println("Connecting to database...");
-                    conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-                    //STEP 4: Execute a query
-                    System.out.println("Creating statement...");
-                    stmt = conn.createStatement();
-                    String sqlSupprimer;
-                    sqlSupprimer = "DELETE FROM armateur WHERE idArmateur = " + id;
-                    stmt.executeUpdate(sqlSupprimer); //updateQuery
-
-                    //STEP 6: Clean-up environment
-                    //rs.close();
-                    stmt.close();
-                    conn.close();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-
-                try {
+                    ArmateurDAO.getInstance().supprimerArmateur(id);
                     ControleurVue.getInstance().actionRetourEnArriere();
                 } catch (Exception e) {
                     e.printStackTrace();

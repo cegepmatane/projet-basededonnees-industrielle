@@ -53,9 +53,10 @@ public class PanneauItemListe extends Region
 			@Override
 			public void handle(ActionEvent event)
 			{
-				try {
+				try{
 					ControleurVue.getInstance().actionSupprimerItem(armateur.getIdArmateur());
-				} catch (Exception e) {
+				}
+				catch(Exception e){
 					e.printStackTrace();
 				}
 			}

@@ -4,8 +4,16 @@ public class Armateur
 {
 	public int idArmateur;
 	public String nom;
-	
-	
+
+	public Armateur(){
+
+	}
+
+	public Armateur(int idArmateur, String nom) {
+		this.idArmateur = idArmateur;
+		this.nom = nom;
+	}
+
 	public int getIdArmateur() {
 		return idArmateur;
 	}
