@@ -1,9 +1,6 @@
 package vue;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import controleur.ControleurVue;
 import javafx.event.ActionEvent;
@@ -14,7 +11,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import modele.Armateur;
 import modele.ArmateurDAO;
 
 public class PanneauAjouterItem extends Region {
